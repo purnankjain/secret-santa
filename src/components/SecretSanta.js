@@ -7,19 +7,24 @@ export default class SecretSanta extends Component {
   constructor(props){
     super(props)
     this.state = {
-      people : [],
-      nextId: 1
+      people : [{
+        id: 1,
+        name: '',
+        exists: '',
+        contact: ''
+      }],
+      nextId: 2
     }
     this.deletePerson = this.deletePerson.bind(this);
     this.onPersonEdit = this.onPersonEdit.bind(this);
   }
   deletePerson(id){
-    let index = this.state.people.findIndex((person) => { return person.id == id });
+    let index = this.state.people.findIndex((person) => { return person.id === id });
     let updatedList = [...this.state.people.slice(0, index), ...this.state.people.slice(index + 1)];
     this.setState({ people: updatedList })
   }
   onPersonEdit(id){
-    let index = this.state.people.findIndex((person) => { return person.id == id });
+    let index = this.state.people.findIndex((person) => { return person.id === id });
     let person = this.state.people[index]
     if(person.name === '' && person.contact === '' && person.exists) {
       let updatedList = [...this.state.people.slice(0, index), ...this.state.people.slice(index + 1)];

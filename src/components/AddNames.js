@@ -13,7 +13,7 @@ export default class AddNames extends Component {
     this.props.onPersonEdit(row.id)
   }
   handleRowDelete(row){
-    this.props.deletePerson(row)
+    this.props.deletePerson(row.id)
   }
   render() {
     let columns = [
