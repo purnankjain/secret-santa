@@ -16,6 +16,7 @@ export default class AddNames extends Component {
     this.props.deletePerson(row.id)
   }
   render() {
+    let nextButton = this.props.data.length > 3 ? (<Link to='/restrictions'><div>Next</div></Link>) : (<div>Atleast 3 friends</div>)
     let columns = [
       {
         dataField: 'id',
@@ -53,11 +54,7 @@ export default class AddNames extends Component {
         blurToSave: true, 
         afterSaveCell: (oldValue, newValue, row) => { this.handleRowEdit(row)}
        })}/>
-      <Link to='/restrictions'>
-        <button type="button">
-          Next
-        </button>
-      </Link>
+      {nextButton}
     </div>)
   }
 }
