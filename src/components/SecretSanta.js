@@ -42,6 +42,14 @@ export default class SecretSanta extends Component {
       },
       {
         id: 5,
+        name: 'Ram',
+        exists: true,
+        contact: '36', 
+        restrictions: [
+        ]
+      },
+      {
+        id: 6,
         name: '',
         exists: false,
         contact: '', 
