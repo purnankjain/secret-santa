@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import { BrowserRouter, Route, Redirect } from 'react-router-dom'
 import Navbar from './Navbar'
 import AddNames from './AddNames'
-import Restrictions from './Restrictions';
+import Restrictions from './Restrictions'
+import SendText from './SendText'
 
 export default class SecretSanta extends Component {
   constructor(props){
@@ -56,10 +57,23 @@ export default class SecretSanta extends Component {
         restrictions: [
         ]
       }],
-      nextId: 2
+      nextId: 2,
+      rules: [{
+        ruleNo: 1,
+        rule: 'ABRACADABRA',
+        exixts: true
+      },
+      {
+        ruleNo: 2,
+        rule: '', 
+        exists: false
+      }],
+      nextRuleId:3
     }
     this.deletePerson = this.deletePerson.bind(this)
     this.onPersonEdit = this.onPersonEdit.bind(this)
+    this.handleRuleEdit = this.handleRuleEdit.bind(this)
+    this.handleRuleDelete = this.handleRuleDelete.bind(this)
     this.populateRestrictions = this.populateRestrictions.bind(this)
   }
   deletePerson(id){
@@ -101,12 +115,43 @@ export default class SecretSanta extends Component {
     let updatedList = [...this.state.people.slice(0, index), newPerson, ...this.state.people.slice(index + 1)]
     this.setState({people: updatedList})
   }
+  handleRuleEdit(row, oldValue){
+    let index = this.state.rules.findIndex((rule) => {return rule.ruleNo === row.ruleNo})
+    if( oldValue === '' && row.rule !== '') {
+      let newRow = {
+        ruleNo: this.state.nextRuleId, 
+        rule: '', 
+        exists: false
+      }
+      let thisRow = {
+        ruleNo: row.ruleNo, 
+        rule: row.rule, 
+        exists: true
+      }
+      this.setState({
+        nextRuleId: this.state.nextRuleId + 1,
+        rules: [...this.state.rules.slice(0, index), thisRow, newRow]
+      })
+      return
+    }
+    if(oldValue !== '' && row.rule === '') {
+      this.setState({
+        rules: [...this.state.rules.slice(0, index), ...this.state.rules.slice(index + 1)]
+      })
+    }
+  }
+  handleRuleDelete(row) {
+    let index = this.state.rules.findIndex((rule) => { return rule.ruleNo === row.ruleNo})
+    let updatedList = [...this.state.rules.slice(0, index), ...this.state.rules.slice(index + 1)]
+    this.setState({ rules: updatedList })
+  }
   render() {
     return (<BrowserRouter>
       <div>
         <Navbar />
     <Route exact path="/" render={() => {return (<div><AddNames data={this.state.people} onPersonEdit={this.onPersonEdit} deletePerson={this.deletePerson}/> <Redirect to="/restrictions" /></div>) }} />
-        <Route path="/restrictions" render={() => {return(<Restrictions data={this.state.people} populateRestrictions={this.populateRestrictions} />)}}/>
+        <Route path="/restrictions" render={() => {return(<div><Restrictions data={this.state.people} populateRestrictions={this.populateRestrictions} /> <Redirect to="/sendText" /></div>)}}/>
+        <Route path="/sendText" render={() => {return(<SendText rules={this.state.rules}  handleRuleEdit = {this.handleRuleEdit} handleRuleDelete={this.handleRuleDelete}/>)}}/>
       </div>
     </BrowserRouter>)
   }

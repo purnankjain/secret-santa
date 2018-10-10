@@ -24,6 +24,13 @@ export default class AddNames extends Component {
         hidden: true
       },
       {
+        dataField: 'sNo',
+        text: '#',
+        formatter: (cell, row, rowIndex) => { return rowIndex + 1},
+        isDummyField: true,
+        editable: false
+      },
+      {
         dataField: 'name',
         text: 'Name'
       },
@@ -45,8 +52,7 @@ export default class AddNames extends Component {
     ]
     return (
     <div>
-      <BootstrapTable 
-      keyField='id' 
+      <BootstrapTable keyField='id'
       columns={columns} 
       data={this.props.data} 
       cellEdit={ cellEditFactory({ 
