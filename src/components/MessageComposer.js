@@ -1,15 +1,15 @@
 import React, { Component } from 'react'
-import Header from './Header'
+import TextBox from './TextBox'
 import RuleBook from './RuleBook'
-import Footer from './Footer'
 
 export default class MessageComposer extends Component {
-  
   render() {
+    let headerLabel = "Build Up"
+    let footerLabel = "Wrap Up"
     return(<div>
-      <Header/>
+      <TextBox label={headerLabel} handleChange={this.props.handleHeaderChange}/>
       <RuleBook rules={this.props.rules} handleRuleEdit = {this.props.handleRuleEdit} handleDelete={this.props.handleRuleDelete}/>
-      <Footer/>
+      <TextBox label={footerLabel} handleChange={this.props.handleFooterChange}/>
     </div>)
   }
 

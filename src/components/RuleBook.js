@@ -3,7 +3,6 @@ import BootstrapTable from 'react-bootstrap-table-next'
 import cellEditFactory from 'react-bootstrap-table2-editor'
 export default class RuleBook extends Component {
   render() {
-    console.log('called render')
     let columns = [{
       dataField: 'ruleNo',
       text: 'id',
@@ -12,7 +11,7 @@ export default class RuleBook extends Component {
     {
       dataField: 'sNo',
       text: '#',
-      formatter: (cell, row, rowIndex) => { console.log('rendering serial' + (rowIndex + 1)) ; return rowIndex + 1},
+      formatter: (cell, row, rowIndex) => { return rowIndex + 1},
       isDummyField: true,
       editable: false
     },
@@ -21,11 +20,10 @@ export default class RuleBook extends Component {
       text: 'Rule'
     },
     {
-      dataField: 'delete',
+      dataField: 'exists',
       text: 'Action',
       isDummyField: true,
       formatter: (cellContent, row, rowIndex) => {
-        console.log('checking' + rowIndex)
         if(row.rule !== '') {
           return(<button type='button' onClick={() => {this.props.handleDelete(row)}} >Delete</button>)
         }

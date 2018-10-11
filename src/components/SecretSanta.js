@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { BrowserRouter, Route, Redirect } from 'react-router-dom'
+import { BrowserRouter, Route } from 'react-router-dom'
 import Navbar from './Navbar'
 import AddNames from './AddNames'
 import Restrictions from './Restrictions'
@@ -8,73 +8,23 @@ import SendText from './SendText'
 export default class SecretSanta extends Component {
   constructor(props){
     super(props)
+    let emptyPerson = { id: 1, name: '', contact: '', exists: false, restrictions: [] }
+    let emptyRule = { ruleNo: 1, rule: '', exists: false }
     this.state = {
-      people : [{
-        id: 1,
-        name: 'Akbar',
-        exists: true,
-        contact: '1234', 
-        restrictions: [
-        ]
-      },
-      {
-        id: 2,
-        name: 'Jodha',
-        exists: true,
-        contact: '1234', 
-        restrictions: [
-        ]
-      },
-      {
-        id: 3,
-        name: 'Birbal',
-        exists: true,
-        contact: '1234', 
-        restrictions: [
-        ]
-      },
-      {
-        id: 4,
-        name: 'Sujamal',
-        exists: true,
-        contact: '12434', 
-        restrictions: [
-        ]
-      },
-      {
-        id: 5,
-        name: 'Ram',
-        exists: true,
-        contact: '36', 
-        restrictions: [
-        ]
-      },
-      {
-        id: 6,
-        name: '',
-        exists: false,
-        contact: '', 
-        restrictions: [
-        ]
-      }],
+      people: [emptyPerson],
+      rules: [emptyRule],
       nextId: 2,
-      rules: [{
-        ruleNo: 1,
-        rule: 'ABRACADABRA',
-        exixts: true
-      },
-      {
-        ruleNo: 2,
-        rule: '', 
-        exists: false
-      }],
-      nextRuleId:3
+      nextRuleId: 2,
+      headerMessage: '',
+      footerMessage: ''
     }
     this.deletePerson = this.deletePerson.bind(this)
     this.onPersonEdit = this.onPersonEdit.bind(this)
     this.handleRuleEdit = this.handleRuleEdit.bind(this)
     this.handleRuleDelete = this.handleRuleDelete.bind(this)
     this.populateRestrictions = this.populateRestrictions.bind(this)
+    this.handleHeaderChange = this.handleHeaderChange.bind(this)
+    this.handleFooterChange = this.handleFooterChange.bind(this)
   }
   deletePerson(id){
     let index = this.state.people.findIndex((person) => { return person.id === id });
@@ -95,12 +45,19 @@ export default class SecretSanta extends Component {
         id: this.state.nextId,
         name: '',
         contact:'',
-        exists: false
+        exists: false,
+        restrictions: []
       }
       let updatedList = [...this.state.people, newRow];
       this.setState({ people: updatedList , nextId: this.state.nextId + 1})
       return;
     }
+  }
+  handleHeaderChange(message) {
+    this.setState({ headerMessage: message });
+  }
+  handleFooterChange(message) {
+    this.setState({ footerMessage: message });
   }
   populateRestrictions(personId, rejectedSantees){
     let index = this.state.people.findIndex((person) => { return person.id === personId })
@@ -149,9 +106,9 @@ export default class SecretSanta extends Component {
     return (<BrowserRouter>
       <div>
         <Navbar />
-    <Route exact path="/" render={() => {return (<div><AddNames data={this.state.people} onPersonEdit={this.onPersonEdit} deletePerson={this.deletePerson}/> <Redirect to="/restrictions" /></div>) }} />
-        <Route path="/restrictions" render={() => {return(<div><Restrictions data={this.state.people} populateRestrictions={this.populateRestrictions} /> <Redirect to="/sendText" /></div>)}}/>
-        <Route path="/sendText" render={() => {return(<SendText rules={this.state.rules}  handleRuleEdit = {this.handleRuleEdit} handleRuleDelete={this.handleRuleDelete}/>)}}/>
+    <Route exact path="/" render={() => {return (<div><AddNames data={this.state.people} onPersonEdit={this.onPersonEdit} deletePerson={this.deletePerson}/> </div>) }} />
+        <Route path="/restrictions" render={() => {return(<div><Restrictions data={this.state.people} populateRestrictions={this.populateRestrictions} /> </div>)}}/>
+        <Route path="/sendText" render={() => {return(<SendText rules={this.state.rules}  handleRuleEdit = {this.handleRuleEdit} handleRuleDelete={this.handleRuleDelete} handleFooterChange={this.handleFooterChange} handleHeaderChange={this.handleHeaderChange} headerMessage={this.state.headerMessage} footerMessage={this.state.footerMessage} />)}}/>
       </div>
     </BrowserRouter>)
   }
