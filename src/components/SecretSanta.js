@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
-import { BrowserRouter, Route } from 'react-router-dom'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Navbar from './Navbar'
 import AddNames from './AddNames'
 import Restrictions from './Restrictions'
 import SendText from './SendText'
+import Confirmation from './Confirmation';
+import ChristmasGroup from './ChristmasGroup';
 
 export default class SecretSanta extends Component {
   constructor(props){
@@ -11,12 +13,68 @@ export default class SecretSanta extends Component {
     let emptyPerson = { id: 1, name: '', contact: '', exists: false, restrictions: [] }
     let emptyRule = { ruleNo: 1, rule: '', exists: false }
     this.state = {
-      people: [emptyPerson],
-      rules: [emptyRule],
+      people : [{
+        id: 1,
+        name: 'Akbar',
+        exists: true,
+        contact: '1234', 
+        restrictions: [
+        ]
+      },
+      {
+        id: 2,
+        name: 'Jodha',
+        exists: true,
+        contact: '1234', 
+        restrictions: [
+        ]
+      },
+      {
+        id: 3,
+        name: 'Birbal',
+        exists: true,
+        contact: '1234', 
+        restrictions: [
+        ]
+      },
+      {
+        id: 4,
+        name: 'Sujamal',
+        exists: true,
+        contact: '12434', 
+        restrictions: [
+        ]
+      },
+      {
+        id: 5,
+        name: 'Ram',
+        exists: true,
+        contact: '36', 
+        restrictions: [
+        ]
+      },
+      {
+        id: 6,
+        name: '',
+        exists: false,
+        contact: '', 
+        restrictions: [
+        ]
+      }],
       nextId: 2,
-      nextRuleId: 2,
-      headerMessage: '',
-      footerMessage: ''
+      rules: [{
+        ruleNo: 1,
+        rule: 'ABRACADABRA',
+        exists: true
+      },
+      {
+        ruleNo: 2,
+        rule: '', 
+        exists: false
+      }],
+      nextRuleId:3,
+      headerMessage: 'hM',
+      footerMessage: 'fM'
     }
     this.deletePerson = this.deletePerson.bind(this)
     this.onPersonEdit = this.onPersonEdit.bind(this)
@@ -92,9 +150,8 @@ export default class SecretSanta extends Component {
       return
     }
     if(oldValue !== '' && row.rule === '') {
-      this.setState({
-        rules: [...this.state.rules.slice(0, index), ...this.state.rules.slice(index + 1)]
-      })
+      this.setState((state) => ( { rules: [...this.state.rules.slice(0, index), ...this.state.rules.slice(index + 1)] } )
+      )
     }
   }
   handleRuleDelete(row) {
@@ -103,12 +160,30 @@ export default class SecretSanta extends Component {
     this.setState({ rules: updatedList })
   }
   render() {
+   
     return (<BrowserRouter>
       <div>
-        <Navbar />
-    <Route exact path="/" render={() => {return (<div><AddNames data={this.state.people} onPersonEdit={this.onPersonEdit} deletePerson={this.deletePerson}/> </div>) }} />
-        <Route path="/restrictions" render={() => {return(<div><Restrictions data={this.state.people} populateRestrictions={this.populateRestrictions} /> </div>)}}/>
-        <Route path="/sendText" render={() => {return(<SendText rules={this.state.rules}  handleRuleEdit = {this.handleRuleEdit} handleRuleDelete={this.handleRuleDelete} handleFooterChange={this.handleFooterChange} handleHeaderChange={this.handleHeaderChange} headerMessage={this.state.headerMessage} footerMessage={this.state.footerMessage} />)}}/>
+      <Switch>
+        <Route path="/christmasGroup">
+          <Switch>
+            <Route exact path="/christmasGroup/:groupId/:userId" render={({match}) => (<ChristmasGroup groupId={match.params.groupId} userId={match.params.userId}/>)} />
+            <Route>
+              <div>Invalid</div>
+            </Route>
+          </Switch>
+        </Route>
+        <Route path="/confirmation" >
+          <Confirmation data={this.state}/>
+        </Route>
+        <Route path="/">
+          <div>
+            <Navbar />
+            <Route exact path="/" render={() => {return (<div><AddNames data={this.state.people} onPersonEdit={this.onPersonEdit} deletePerson={this.deletePerson}/> </div>) }} />
+            <Route path="/restrictions" render={() => {return(<div><Restrictions data={this.state.people} populateRestrictions={this.populateRestrictions} /> </div>)}}/>
+            <Route path="/sendText" render={() => {return(<SendText rules={this.state.rules}  handleRuleEdit = {this.handleRuleEdit} handleRuleDelete={this.handleRuleDelete} handleFooterChange={this.handleFooterChange} handleHeaderChange={this.handleHeaderChange} headerMessage={this.state.headerMessage} footerMessage={this.state.footerMessage} />)}}/>
+          </div>
+        </Route>
+      </Switch>
       </div>
     </BrowserRouter>)
   }
