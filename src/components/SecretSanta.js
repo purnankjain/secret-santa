@@ -4,8 +4,10 @@ import Navbar from './Navbar'
 import AddNames from './AddNames'
 import Restrictions from './Restrictions'
 import SendText from './SendText'
-import Confirmation from './Confirmation';
-import ChristmasGroup from './ChristmasGroup';
+import Confirmation from './Confirmation'
+import ChristmasGroup from './ChristmasGroup'
+import WelcomeScreen from './WelcomeScreen'
+
 
 export default class SecretSanta extends Component {
   constructor(props){
@@ -175,10 +177,13 @@ export default class SecretSanta extends Component {
         <Route path="/confirmation" >
           <Confirmation data={this.state}/>
         </Route>
+        <Route exact path="/">
+          <WelcomeScreen />
+        </Route>
         <Route path="/">
           <div>
             <Navbar />
-            <Route exact path="/" render={() => {return (<div><AddNames data={this.state.people} onPersonEdit={this.onPersonEdit} deletePerson={this.deletePerson}/> </div>) }} />
+            <Route path="/addNames" render={() => {return (<div><AddNames data={this.state.people} onPersonEdit={this.onPersonEdit} deletePerson={this.deletePerson}/> </div>) }} />
             <Route path="/restrictions" render={() => {return(<div><Restrictions data={this.state.people} populateRestrictions={this.populateRestrictions} /> </div>)}}/>
             <Route path="/sendText" render={() => {return(<SendText rules={this.state.rules}  handleRuleEdit = {this.handleRuleEdit} handleRuleDelete={this.handleRuleDelete} handleFooterChange={this.handleFooterChange} handleHeaderChange={this.handleHeaderChange} headerMessage={this.state.headerMessage} footerMessage={this.state.footerMessage} />)}}/>
           </div>
