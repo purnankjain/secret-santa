@@ -7,7 +7,8 @@ import SendText from './SendText'
 import Confirmation from './Confirmation'
 import ChristmasGroup from './ChristmasGroup'
 import WelcomeScreen from './WelcomeScreen'
-
+import Header from './Header';
+import Footer from './Footer';
 
 export default class SecretSanta extends Component {
   constructor(props){
@@ -165,6 +166,7 @@ export default class SecretSanta extends Component {
    
     return (<BrowserRouter>
       <div>
+      <Header />
       <Switch>
         <Route path="/christmasGroup">
           <Switch>
@@ -189,6 +191,7 @@ export default class SecretSanta extends Component {
           </div>
         </Route>
       </Switch>
+      <Footer/>
       </div>
     </BrowserRouter>)
   }

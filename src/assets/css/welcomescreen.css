@@ -1,16 +1,15 @@
-img {
-  width: 1
+.display-3 {
+  font-size: 4em;
+  font-weight: 350;
 }
-body{  
-  background: #b3dfff;
+.display-4 {
+  font-size: 2.7em;
 }
-.logo {
-  max-height: 70px;
+.jumbotron img {
+  max-height: 350px;
 }
-.logo-text{
-  font-size: 3em;
-  margin-left:20px;
-}
-.hero .cta{
-  font-size: 2em;
+.jumbotron {
+  background-image: linear-gradient(to right bottom,#007bff1f, #ffffff);
+  min-height: 33em;
+  height: 100%;
 }

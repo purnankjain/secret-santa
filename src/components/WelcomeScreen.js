@@ -1,37 +1,31 @@
 import React, { Component } from 'react'
-import gift from '../assets/img/gift.png'
-import reindeer from '../assets/img/reindeer.png'
-import mistletoe from '../assets/img/mistletoe.png'
+import { Link } from 'react-router-dom'
+import santa from '../assets/img/santa.png'
 import '../assets/css/welcomescreen.css'
 
 export default class WelcomeScreen extends Component {
   render() {
-    return (<div className="container-fluid">
-      <div className="logo row">
-        <div className="col-2">
-          <img src={mistletoe} className="mh-100"/>
-        </div>
-        <div className="logo-text text-left col">
-          Secret Santa
-        </div>
-      </div>
-      <div className="hero">
-        <div className="cta">
-          It's that time of the year, when you feel gracious enough to buy your friends gifts
-        </div>
-        <div>
-          <button className="btn btn-danger btn-lg">
-            Click here to start
-          </button>
-        </div>
-        <div>
-          <img src={gift} />
-        </div>
-      </div>
-
+    return (
       <div>
-        Credits: Made by Sonali <img src={reindeer} />
+        <div className="jumbotron my-0 text-center">
+          <div className="row">
+            <div className="col-lg-4 col-md">
+              <img src={santa} className="img-fluid" />
+            </div>
+            <div className="col-lg-8 col-md ">
+              <h1 className="display-3">Spreading the joy</h1>
+              <h3 className="display-4" >becomes sweeter than ever</h3>
+              <p className="lead">This holiday season, do away with the chits and draw names online in 3 simple steps.</p>
+              <h3 className="row">
+                <span className="text-primary col-lg">1. Add Friends</span>
+                <span className="text-warning col-lg">2. Restrictions</span>
+                <span className="text-success col-lg">3. Hit Send</span>
+              </h3>
+              <Link to='/addNames' className="btn btn-lg btn-danger cta shadow mx-4 mt-4" ><h2>Get Started Now</h2></Link>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>)
+    )
   }
 }

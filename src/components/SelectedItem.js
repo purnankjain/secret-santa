@@ -1,15 +1,20 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 
-export default class  SelectedItem extends Component{
+export default class SelectedItem extends Component {
   constructor(props) {
     super(props)
     this.removeItem = this.removeItem.bind(this)
   }
-  removeItem(){
+  removeItem() {
     this.props.removeSelectedItem(this.props.item)
   }
-  render(){
-    return (<span style={{padding: '10px'}}><span>{this.props.item}</span><span onClick={this.removeItem} style={{padding: '10px'}}><sup>X</sup></span></span>
+  render() {
+    return (
+      <span  className="mx-2 badge badge-success" >
+        <span>{this.props.item}</span>
+        <span onClick={this.removeItem} className="clickable"><sup><span aria-hidden="true" >&times;</span></sup>
+        </span>
+      </span>
     )
   }
 }
