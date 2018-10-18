@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom' 
 import MultiSelection from './MultiSelection'
 import SantaLogic from './SantaLogic'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSkullCrossbones } from '@fortawesome/free-solid-svg-icons'
 
 export default class Restrictions extends Component {
   constructor(props){
@@ -22,7 +20,7 @@ export default class Restrictions extends Component {
     const symbolStyle = {flex: 1, textAlign:'center'}
     const personName = <div style={textStyle}>{person.name}</div>
     const restrictionList = <MultiSelection style={textStyle} data={existingSantee} rejects={person.restrictions} populateRestrictions={(rejectedSantees)=>{ this.props.populateRestrictions(person.id, rejectedSantees) }}/>
-    const restrictionSymbol = <div style={symbolStyle}><FontAwesomeIcon icon={faSkullCrossbones} className="fa-2x"/></div>
+    const restrictionSymbol = <div style={symbolStyle}></div>
     return person.exists ? (<div style={{display: "flex"}} className="bg-light shadow-sm restriction-row rounded my-2 py-2" key={person.id}><h4 className="ml-4 col-4">{personName}</h4>{restrictionSymbol}{restrictionList}</div>) : ''
   }
   render() {

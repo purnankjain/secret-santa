@@ -165,7 +165,7 @@ export default class SecretSanta extends Component {
   render() {
    
     return (<BrowserRouter>
-      <div>
+      <div className="container-fluid">
       <Header />
       <Switch>
         <Route path="/christmasGroup">
