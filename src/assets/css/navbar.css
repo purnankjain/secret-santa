@@ -1,0 +1,36 @@
+.wizard {
+    width: 100%;
+}
+.wizard-bar {
+    position: relative;
+    top: 45px;
+    background: dodgerblue;
+    width: 100%;
+    height: 5px;
+    z-index: -1;
+}
+.step-item {
+    width: 30vw;
+}
+.step-num {
+    display: block;
+    background: dodgerblue;
+    border-radius: 50%;
+    width:1.1em;
+    height:1.1em;
+    font-size: 2em;
+    line-height:1em;
+    padding-left: 0.25em;
+    color: white;
+    margin:auto;
+
+}
+.step-name {
+    display: block;
+    width: 100%;
+    font-size: 1.2em;
+    font-weight: 500;
+    margin-top:0.1em;
+    text-align: center;
+    color: dodgerblue;
+}

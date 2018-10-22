@@ -1,17 +1,26 @@
 import React, { Component } from 'react'
+import '../assets/css/navbar.css'
+
 export default class Navbar extends Component {
   render() {
     return (
-      <ul class="nav justify-content-center my-4">
-        <li class="nav-item">
-          <span class="nav-link badge badge-primary">Add Names</span>
-        </li>
-        <li class="nav-item">
-          <span class="nav-link badge badge-primary">Restrictions</span>
-        </li>
-        <li class="nav-item"><span class="nav-link badge badge-primary">Send Text</span>
-        </li>
-      </ul>
+      <div className="wizard">
+        <div className="wizard-bar"></div>
+        <ul className="nav justify-content-center my-4">
+          <li className="step-item">
+            <span className="step-num">1</span>
+            <span className="step-name">Add Names</span>
+          </li>
+          <li className="step-item">
+            <span className="step-num">2</span>
+            <span className="step-name">Restrictions</span>
+          </li>
+          <li className="step-item">
+            <span className="step-num">3</span>
+            <span className="step-name">Send Text</span>
+          </li>
+        </ul>
+      </div>
     )
   }
 }
