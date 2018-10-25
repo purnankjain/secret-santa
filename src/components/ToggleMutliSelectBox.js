@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlusCircle } from '@fortawesome/free-solid-svg-icons'
+import { faChevronDown, faChevronRight } from '@fortawesome/free-solid-svg-icons'
 
 export default class ToggleMutliSelectBox extends Component {
   render() {
-    return (<span onClick={this.props.handleToggle}><FontAwesomeIcon icon={faPlusCircle} className="clickable fa-2x float-right mr-4"/> </span>)
+    let icon = this.props.isOpen ? faChevronDown : faChevronRight
+    return (<span onClick={this.props.handleToggle}><FontAwesomeIcon icon={icon} className="clickable fa-2x"/> </span>)
   }
 }

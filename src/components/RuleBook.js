@@ -16,11 +16,17 @@ export default class RuleBook extends Component {
       text: '#',
       formatter: (cell, row, rowIndex) => { return rowIndex + 1 },
       isDummyField: true,
+      style: {
+        width: "10%"
+      },
       editable: false
     },
     {
       dataField: 'rule',
-      text: 'Rule'
+      text: 'Rule',
+      style: {
+        width: "75%"
+      }
     },
     {
       dataField: 'exists',
@@ -28,16 +34,21 @@ export default class RuleBook extends Component {
       isDummyField: true,
       formatter: (cellContent, row, rowIndex) => {
         if (row.rule !== '') {
-          return (<button type='button' className="btn btn-danger btn-sm" onClick={() => { this.props.handleDelete(row) }} ><FontAwesomeIcon icon={faTrashAlt} /> </button>)
+          return (<button type='button' className="btn btn-danger btn-sm" onClick={() => { this.props.handleDelete(row) }} ><FontAwesomeIcon icon={faTrashAlt} /> Delete</button>)
         }
       },
-      editable: false
+      editable: false,
+      style: {
+        width: "15%"
+      }
     }]
     return (<div>
       <label className="text-primary h5">Add Rules</label>
       <BootstrapTable
         keyField='ruleNo'
         columns={columns} data={this.props.rules}
+        bordered={false}
+        rowClasses="bg-light shadow-sm rounded my-2 py-2"
         cellEdit={cellEditFactory({
           mode: 'click',
           blurToSave: true,

@@ -3,8 +3,8 @@ import * as firebase from 'firebase'
 import SantaLogic from './SantaLogic'
 import CountDownBox from './CountDownBox'
 
-export default class Confirmation extends Component{
-  componentDidMount(){
+export default class Confirmation extends Component {
+  componentDidMount() {
     const rootRef = firebase.database().ref().child('group')
     let people = this.props.data.people.filter((person) => (person.exists))
     let rule = this.props.data.rules.filter((rule) => (rule.exists))
@@ -20,8 +20,8 @@ export default class Confirmation extends Component{
     // let peopleRef = newGroupRef.child('people')
     updatedPeople.map((person) => {
       //  let newPersonRef = peopleRef.push(person)
-      })
-    
+    })
+
   }
   extractSantee(santa, santaSanteeList) {
     let index = santaSanteeList.findIndex((elm) => { return elm === santa })
@@ -31,18 +31,19 @@ export default class Confirmation extends Component{
   formPeople(people, santaSanteeList) {
     return people.map((person) => {
       let santee = this.extractSantee(person.name, santaSanteeList)
-      return { name: person.name, contact: person.contact , santee: santee}
+      return { name: person.name, contact: person.contact, santee: santee }
     })
   }
   formRules(rules) {
     return rules.map((rule) => ({ rule: rule.rule }))
   }
   render() {
-    return(
-      <div>
-        <div>Your message have been sent!!</div>
-        <div></div>
-        <CountDownBox year={2018} month={12} date={25} event="Christmas" message="Merry Christmas"/>
+    return (
+      <div className="text-center confirmation-box">
+        <div className="display-4">Your message have been sent!!</div>
+        <div>
+          <CountDownBox year={2018} month={12} date={25} event="Christmas" />
+        </div>
       </div>
     )
   }

@@ -30,25 +30,44 @@ export default class AddNames extends Component {
         text: '#',
         formatter: (cell, row, rowIndex) => { return rowIndex + 1 },
         isDummyField: true,
-        editable: false
+        editable: false,
+        headerClasses: "h4",
+        classes: "h5",
+        style: {
+          width: "5%"
+        }
       },
       {
         dataField: 'name',
-        text: 'Name'
+        text: 'Name',
+        headerClasses: "h4",
+        classes: "h5",
+        style: {
+          width: "40%"
+        }
       },
       {
         dataField: 'contact',
-        text: 'Mobile Number'
+        text: 'Contact',
+        headerClasses: "h4",
+        classes: "h5",
+        style: {
+          width: "40%"
+        }
       },
       {
         dataField: 'exists',
         isDummyField: true,
         text: 'Action',
+        headerClasses: "h4",
         editable: false,
         formatter: (cellContent, row) => {
           if (row.exists) {
             return (<button type='button' className="btn btn-sm btn-danger btn-block" onClick={() => { this.handleRowDelete(row) }} ><FontAwesomeIcon icon={faTrashAlt} /> Delete</button>)
           }
+        },
+        style: {
+          width: "15%"
         }
       }
     ]
@@ -56,6 +75,8 @@ export default class AddNames extends Component {
       <div className="container">
         <BootstrapTable keyField='id'
           columns={columns}
+          bordered={false}
+          rowClasses="bg-light shadow-sm rounded my-2 py-2"
           data={this.props.data}
           cellEdit={cellEditFactory({
             mode: 'click',

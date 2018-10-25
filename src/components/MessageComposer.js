@@ -7,11 +7,11 @@ export default class MessageComposer extends Component {
     let headerLabel = "Build Up"
     let footerLabel = "Wrap Up"
     return (
-      <div class="card">
-        <div class="card-header bg-primary text-white">
+      <div className="card">
+        <div className="card-header bg-primary text-white">
           <h4>Compose</h4>
         </div>
-        <div class="card-body">
+        <div className="card-body">
           <TextBox label={headerLabel} handleChange={this.props.handleHeaderChange} />
           <RuleBook rules={this.props.rules} handleRuleEdit={this.props.handleRuleEdit} handleDelete={this.props.handleRuleDelete} />
           <TextBox label={footerLabel} handleChange={this.props.handleFooterChange} />

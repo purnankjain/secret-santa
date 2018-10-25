@@ -7,9 +7,8 @@ export default class WelcomeScreen extends Component {
   render() {
     return (
         <div className="jumbotron text-center row">
-          {/* <div className="row"> */}
             <div className="col-lg-4 col-md cta-img">
-              <img src={santa} className="img-fluid" />
+              <img src={santa} className="img-fluid santa-img" alt="happy-santa"/>
             </div>
             <div className="col-lg-8 col-md cta-text">
               <h1 className="display-3 mt-4">Spreading the joy</h1>
@@ -22,7 +21,6 @@ export default class WelcomeScreen extends Component {
               </h3>
               <Link to='/addNames' className="btn btn-lg btn-danger cta shadow mx-4 mt-4" ><h2>Get Started Now</h2></Link>
             </div>
-          {/* </div> */}
         </div>
     )
   }

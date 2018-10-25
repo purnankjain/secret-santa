@@ -5,9 +5,9 @@ import icon from '../assets/img/icon.png'
 export default class Header extends Component{
   render(){
     return(
-    <nav class="navbar navbar-light bg-primary shadow topbar-header">
+    <nav className="navbar navbar-light bg-primary shadow topbar-header">
         <Link to='/' className="navbar-brand">
-        <img src={icon} width="30" height="30" class="d-inline-block align-top" alt="" />
+        <img src={icon} width="30" height="30" className="d-inline-block align-top" alt="" />
         <span className="text-white h3 ml-3">Secret Santa</span>
         </Link>
     </nav>)

@@ -1,0 +1,16 @@
+.flip-square {
+  height: 100px;
+  width: 100px;
+  background-color: #555;
+  font-size: 4em;
+  color: white;
+  border-radius: 10px;
+  position: relative;
+}
+
+.separator {
+  background: red;
+  height: 2px;
+  top: -50px;
+  position: relative;
+}
