@@ -35,7 +35,7 @@ export default class ChristmasGroup extends Component {
       let rules = snap.val()
       this.setState({ rules: rules })
     })
-    if (new Date() > new Date(2018, 11, 25)) {
+    if (new Date() < new Date(2018, 11, 25)) {
       const personRef = rootRef.child('people').child(this.props.userId)
       personRef.once("value", (snap) => {
         let santa = snap.val()
@@ -63,7 +63,7 @@ export default class ChristmasGroup extends Component {
   }
   render() {
     let { loaded, exists } = this.state
-    let christmasHappened = new Date() < new Date(2018, 11, 25)
+    let christmasHappened = new Date() > new Date(2018, 11, 25)
     let christmasBlock = christmasHappened ? <PostChristmas {...this.state} /> : <PreChristmas {...this.state} />
     let invalidBlock = <div>Invalid Link, Please check the link provided to you</div>
     let spinnerBlock = <div className="text-center spinner-block">
