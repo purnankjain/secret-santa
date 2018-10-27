@@ -27,7 +27,7 @@ export default class MultiSelection extends Component {
     return this.props.rejects.length !== this.props.data.length
   }
   render() {
-    let errorMessage = <div className="badge badge-danger mt-2">You can't reject everyone! Duh!</div>
+    let errorMessage = <div className="badge badge-danger mt-2">You can't reject <br className="d-md-none"/> everyone! Duh!</div>
     let restrictedNames = this.props.rejects.map((santee, index) => { return (<SelectedItem key={index} item={santee} removeSelectedItem={this.removeSelectedItem} removeable/>) })
     if (this.props.rejects.length < 1) {
       restrictedNames = <SelectedItem item="No Restrictions" removeSelectedItem={this.removeSelectedItem}/>

@@ -4,6 +4,7 @@ import BootstrapTable from 'react-bootstrap-table-next'
 import cellEditFactory from 'react-bootstrap-table2-editor'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
+import PropTypes from 'prop-types'
 
 export default class AddNames extends Component {
   constructor(props) {
@@ -31,43 +32,43 @@ export default class AddNames extends Component {
         formatter: (cell, row, rowIndex) => { return rowIndex + 1 },
         isDummyField: true,
         editable: false,
-        headerClasses: "h4",
-        classes: "h5",
+        headerClasses: "h5",
+        classes: "h6",
         style: {
-          width: "5%"
+          width: "5vw"
         }
       },
       {
         dataField: 'name',
         text: 'Name',
-        headerClasses: "h4",
-        classes: "h5",
+        headerClasses: "h5",
+        classes: "h6",
         style: {
-          width: "40%"
+          width: "40vw"
         }
       },
       {
         dataField: 'contact',
         text: 'Contact',
-        headerClasses: "h4",
-        classes: "h5",
+        headerClasses: "h5",
+        classes: "h6",
         style: {
-          width: "40%"
+          width: "40vw"
         }
       },
       {
         dataField: 'exists',
         isDummyField: true,
         text: 'Action',
-        headerClasses: "h4",
+        headerClasses: "h5",
         editable: false,
         formatter: (cellContent, row) => {
           if (row.exists) {
-            return (<button type='button' className="btn btn-sm btn-danger btn-block shadow" onClick={() => { this.handleRowDelete(row) }} ><FontAwesomeIcon icon={faTrashAlt} /> Delete</button>)
+            return (<button type='button' className="btn btn-sm btn-danger shadow" onClick={() => { this.handleRowDelete(row) }} ><FontAwesomeIcon icon={faTrashAlt} /><span className="d-none d-md-block">Delete</span></button>)
           }
         },
         style: {
-          width: "15%"
+          width: "15vw"
         }
       }
     ]
