@@ -3,32 +3,37 @@
 }
 .wizard-bar {
     position: relative;
-    top: 45px;
+    top: 3em;
     background: dodgerblue;
     width: 100%;
-    height: 5px;
+    height: 10px;
     z-index: -1;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+}
+.wizard > ul {
+    position: relative;
+    top: -1em;
 }
 .step-item {
     width: 30vw;
+    text-align: center;
 }
 .step-num {
-    display: block;
-    background: dodgerblue;
-    border-radius: 50%;
-    width:1.1em;
-    height:1.1em;
-    font-size: 2em;
-    line-height:1em;
-    padding-left: 0.25em;
+    display: inline-block;
+    background: #ffbe00;    
+    text-align: center;
     color: white;
-    margin:auto;
-
+    line-height: 2em;
+    font-size: 2em;
+    border-radius: 50%;
+    height: 2em;
+    width: 2em;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
 }
 .step-name {
     display: block;
     width: 100%;
-    font-size: 1.2em;
+    font-size: 1.1em;
     font-weight: 500;
     margin-top:0.1em;
     text-align: center;

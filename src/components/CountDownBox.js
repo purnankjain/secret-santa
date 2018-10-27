@@ -44,7 +44,7 @@ export default class CountDownBox extends Component {
         <FlipCounter newNum={remainingMinutes} unit={'minutes'} />
         <FlipCounter newNum={remainingSeconds} unit={'seconds'} />
       </div>
-      <h2 className="mt-4">To {this.props.event}</h2>
+      <div className="mt-4 event-text">To {this.props.event}</div>
     </div>)
   }
 }

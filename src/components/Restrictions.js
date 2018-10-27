@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import MultiSelection from './MultiSelection'
 import SantaLogic from './SantaLogic'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTimes } from '@fortawesome/free-solid-svg-icons'
+import { faGift, faSlash } from '@fortawesome/free-solid-svg-icons'
 
 export default class Restrictions extends Component {
   constructor(props) {
@@ -19,13 +19,16 @@ export default class Restrictions extends Component {
     const onlySantee = this.filterList(this.props.data, (p) => { return p.id === person.id })
     const existingSantee = this.filterList(onlySantee, (p) => { return p.exists === false })
     const restrictionList = <MultiSelection data={existingSantee} rejects={person.restrictions} populateRestrictions={(rejectedSantees) => { this.props.populateRestrictions(person.id, rejectedSantees) }} />
-    const restrictionSymbol = <FontAwesomeIcon icon={faTimes} className="fa fa-2x text-danger" />
+    const restrictionSymbol = <div className="fa-stack fa-1x">
+      <FontAwesomeIcon icon={faGift} className="fa text-warning fa-stack-2x" />
+      <FontAwesomeIcon icon={faSlash} className="fa text-danger fa-stack-2x" />
+    </div>
     return person.exists ? (
-      <div className="row bg-light shadow-sm restriction-row m-0 my-2" key={person.id}>
-        <div className="col-4 h5 pl-4">
+      <div className="row bg-light shadow-sm restriction-row m-0 mb-2" key={person.id}>
+        <div className="col-3 h5 pl-4 pt-2">
           {person.name}
         </div>
-        <div className="col-1">
+        <div className="col-2">
           {restrictionSymbol}
         </div>
         <div className="col-7">
@@ -38,7 +41,7 @@ export default class Restrictions extends Component {
     let possibleCount = SantaLogic.countValidCombinations(this.props.data.filter((person) => { return person.exists }))
     let possibleCombinations = <h4 className="text-primary my-4">Possible Combinations : {possibleCount}</h4>
     let restrictionRows = this.props.data.map(this.formRestrictionRow)
-    let nextButton = (possibleCount > 0) ? <Link to="/sendText"><div className="btn btn-success mb-4 btn-block">Next</div></Link> : <div className="btn btn-secondary mb-4 btn-block">Next</div>
+    let nextButton = (possibleCount > 0) ? <Link to="/sendText" className="no-link"><div className="btn btn-next mb-4 btn-block">Next</div></Link> : <div className="btn btn-secondary mb-4 btn-block">Next</div>
     return (<div className="container">
       {restrictionRows}
       {possibleCombinations}

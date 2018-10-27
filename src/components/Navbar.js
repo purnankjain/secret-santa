@@ -8,16 +8,16 @@ export default class Navbar extends Component {
         <div className="wizard-bar"></div>
         <ul className="nav justify-content-center my-4">
           <li className="step-item">
-            <span className="step-num">1</span>
-            <span className="step-name">Add Names</span>
+            <div className="step-num">1</div>
+            <div className="step-name">Add Names</div>
           </li>
           <li className="step-item">
-            <span className="step-num">2</span>
-            <span className="step-name">Restrictions</span>
+            <div className="step-num">2</div>
+            <div className="step-name">Restrictions</div>
           </li>
           <li className="step-item">
-            <span className="step-num">3</span>
-            <span className="step-name">Send Text</span>
+            <div className="step-num">3</div>
+            <div className="step-name">Send Text</div>
           </li>
         </ul>
       </div>

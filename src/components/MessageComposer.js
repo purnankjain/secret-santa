@@ -7,7 +7,7 @@ export default class MessageComposer extends Component {
     let headerLabel = "Build Up"
     let footerLabel = "Wrap Up"
     return (
-      <div className="card">
+      <div className="card shadow">
         <div className="card-header bg-primary text-white">
           <h4>Compose</h4>
         </div>

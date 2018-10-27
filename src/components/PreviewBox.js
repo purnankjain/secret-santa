@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 export default class PreviewBox extends Component {
   render() {
     return (
-      <div className="card h-100">
+      <div className="card h-100 shadow">
         <div className="card-header bg-primary text-white">
           <h4>Preview</h4>
         </div>

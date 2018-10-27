@@ -18,7 +18,7 @@ export default class AddNames extends Component {
     this.props.deletePerson(row.id)
   }
   render() {
-    let nextButton = this.props.data.length > 3 ? (<Link to='/restrictions'><div className="btn btn-success mb-4 btn-block">Next</div></Link>) : (<div className="alert alert-danger">Hey, add at least 3 friends!!</div>)
+    let nextButton = this.props.data.length > 3 ? (<Link to='/restrictions' className="no-link"><div className="btn btn-next mb-4 btn-block">Next</div></Link>) : (<div className="alert alert-danger">Hey, add at least 3 friends!!</div>)
     let columns = [
       {
         dataField: 'id',
@@ -63,7 +63,7 @@ export default class AddNames extends Component {
         editable: false,
         formatter: (cellContent, row) => {
           if (row.exists) {
-            return (<button type='button' className="btn btn-sm btn-danger btn-block" onClick={() => { this.handleRowDelete(row) }} ><FontAwesomeIcon icon={faTrashAlt} /> Delete</button>)
+            return (<button type='button' className="btn btn-sm btn-danger btn-block shadow" onClick={() => { this.handleRowDelete(row) }} ><FontAwesomeIcon icon={faTrashAlt} /> Delete</button>)
           }
         },
         style: {

@@ -27,13 +27,13 @@ export default class MultiSelection extends Component {
     return this.props.rejects.length !== this.props.data.length
   }
   render() {
-    let errorMessage = <span className="badge badge-danger mt-2">You can't reject everyone! Duh!</span>
+    let errorMessage = <div className="badge badge-danger mt-2">You can't reject everyone! Duh!</div>
     let restrictedNames = this.props.rejects.map((santee, index) => { return (<SelectedItem key={index} item={santee} removeSelectedItem={this.removeSelectedItem} removeable/>) })
     if (this.props.rejects.length < 1) {
       restrictedNames = <SelectedItem item="No Restrictions" removeSelectedItem={this.removeSelectedItem}/>
     }
     let isValid = this.checkValid()
-    let validationError = isValid ? '' : <span>{errorMessage}</span>
+    let validationError = isValid ? '' : <div className="word-wrap">{errorMessage}</div>
     let selectionBox = this.state.showBox ? <select multiple className='form-control' onChange={this.handleChange}>{this.props.data.map((santee) => { return (<option key={santee.id} value={santee.name}>{santee.name}</option>) })}
     </select> : ''
     return (
@@ -49,7 +49,7 @@ export default class MultiSelection extends Component {
           </div>
           <div className="col-3"><ToggleMutliSelectBox handleToggle={this.handleClick} isOpen={this.state.showBox}/></div>
         </div>
-        <div className="row col-12"> {validationError}</div>
+        <div className="row col-12">{validationError}</div>
       </div>);
   }
 }

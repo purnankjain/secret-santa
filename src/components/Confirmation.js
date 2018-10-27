@@ -40,7 +40,7 @@ export default class Confirmation extends Component {
   render() {
     return (
       <div className="text-center confirmation-box">
-        <div className="display-4">Your message have been sent!!</div>
+        <div className="display-4">Your message has been sent!!</div>
         <div>
           <CountDownBox year={2018} month={12} date={25} event="Christmas" />
         </div>

@@ -206,7 +206,6 @@ export default class SecretSanta extends Component {
     return (<BrowserRouter>
     <div>
     <Header />
-      <div className="container-fluid">
         <Switch>
           <Route path="/christmasGroup">
             <Switch>
@@ -231,7 +230,6 @@ export default class SecretSanta extends Component {
             </div>
           </Route>
         </Switch>
-      </div>
       <Footer />
     </div>
     </BrowserRouter>)

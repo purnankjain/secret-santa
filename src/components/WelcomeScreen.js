@@ -11,7 +11,7 @@ export default class WelcomeScreen extends Component {
               <img src={santa} className="img-fluid santa-img" alt="happy-santa"/>
             </div>
             <div className="col-lg-8 col-md cta-text">
-              <h1 className="display-3 mt-4">Spreading the joy</h1>
+              <h1 className="display-3">Spreading the joy</h1>
               <h3 className="display-4" >becomes sweeter than ever</h3>
               <p className="lead mt-4">This holiday season, do away with the chits and draw names online in 3 simple steps.</p>
               <h3 className="row mt-4">
