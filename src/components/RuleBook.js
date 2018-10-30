@@ -34,7 +34,7 @@ export default class RuleBook extends Component {
       isDummyField: true,
       formatter: (cellContent, row, rowIndex) => {
         if (row.rule !== '') {
-          return (<button type='button' className="btn btn-danger btn-sm" onClick={() => { this.props.handleDelete(row) }} ><FontAwesomeIcon icon={faTrashAlt} /><span className="d-none d-md-block">Delete</span></button>)
+          return (<button type='button' className="btn btn-danger btn-sm" onClick={() => { this.props.handleDelete(row) }} ><FontAwesomeIcon icon={faTrashAlt} /><span className="d-none d-md-inline-block">&nbsp;Delete</span></button>)
         }
       },
       editable: false,

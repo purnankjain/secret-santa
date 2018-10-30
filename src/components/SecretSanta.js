@@ -20,7 +20,7 @@ export default class SecretSanta extends Component {
         id: 1,
         name: 'Akbar',
         exists: true,
-        contact: '1234',
+        contact: '1234567890',
         restrictions: [
         ]
       },
@@ -28,7 +28,7 @@ export default class SecretSanta extends Component {
         id: 2,
         name: 'Jodha',
         exists: true,
-        contact: '1234',
+        contact: '1234567890',
         restrictions: [
         ]
       },
@@ -36,7 +36,7 @@ export default class SecretSanta extends Component {
         id: 3,
         name: 'Birbal',
         exists: true,
-        contact: '1234',
+        contact: '1234567890',
         restrictions: [
         ]
       },
@@ -44,7 +44,7 @@ export default class SecretSanta extends Component {
         id: 4,
         name: 'Sujamal',
         exists: true,
-        contact: '12434',
+        contact: '1234567890',
         restrictions: [
         ]
       },
@@ -52,14 +52,14 @@ export default class SecretSanta extends Component {
         id: 5,
         name: 'Ram',
         exists: true,
-        contact: '36',
+        contact: '1234567890',
         restrictions: [
         ]
       }, {
         id: 6,
         name: 'Akbari',
         exists: true,
-        contact: '1234',
+        contact: '1234567890',
         restrictions: [
         ]
       },
@@ -67,7 +67,7 @@ export default class SecretSanta extends Component {
         id: 7,
         name: 'Jodh',
         exists: true,
-        contact: '1234',
+        contact: '1234567890',
         restrictions: [
         ]
       },
@@ -75,7 +75,7 @@ export default class SecretSanta extends Component {
         id: 8,
         name: 'Birbali',
         exists: true,
-        contact: '1234',
+        contact: '1234567890',
         restrictions: [
         ]
       },
@@ -83,7 +83,7 @@ export default class SecretSanta extends Component {
         id: 9,
         name: 'Sujamala',
         exists: true,
-        contact: '12434',
+        contact: '1234567890',
         restrictions: [
         ]
       },
@@ -91,7 +91,7 @@ export default class SecretSanta extends Component {
         id: 10,
         name: 'Ramaya',
         exists: true,
-        contact: '36',
+        contact: '1234567890',
         restrictions: [
         ]
       },
